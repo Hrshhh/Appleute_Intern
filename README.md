@@ -15,3 +15,13 @@ npm run start
 Frontend:- Redux Toolkit, react-toastify, stripe, mantine and tailwind for Styling.
 
 Backend:- Nest JS
+
+This is intended for the international market. Therefore, in the address section of Stripe, please enter an address that is located outside of India.
+
+Card Details
+
+Visa Card No:- 4111 1111 1111 1111
+
+MM / YY:- 12/24
+
+CVC:- 123
