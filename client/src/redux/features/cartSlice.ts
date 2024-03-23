@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { CartItem } from "./prop";
 
-const initialState = {
-    cartItems: <any>[]
+type InitialStateType = {
+  cartItems: CartItem[];
+};
+
+const initialState: InitialStateType = {
+    cartItems: []
 }
 
 const cartSlice = createSlice({
@@ -9,7 +14,7 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
       addToCart: (state, action) => {
-        const itemIndex = state.cartItems.findIndex((item: any) => item.id === action.payload.id);
+        const itemIndex = state.cartItems.findIndex((item: CartItem) => item.id === action.payload.id);
 
         if(itemIndex >= 0){
             state.cartItems[itemIndex].quantity += 1;
@@ -22,12 +27,12 @@ const cartSlice = createSlice({
       },
 
       removeItem: (state, action) => {
-        const items = state.cartItems.filter((item: any) => item?.id !== action.payload);
+        const items = state.cartItems.filter((item: CartItem) => item?.id !== action.payload);
         state.cartItems = items;
       },
 
       decrementItem: (state, action) => {
-        const itemIndex = state.cartItems.findIndex((item: any) => item.id === action.payload);
+        const itemIndex = state.cartItems.findIndex((item: CartItem) => item.id === action.payload);
 
         if(state.cartItems[itemIndex].quantity >= 1){
             state.cartItems[itemIndex].quantity -= 1;

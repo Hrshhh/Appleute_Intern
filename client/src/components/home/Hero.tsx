@@ -3,11 +3,12 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { items } from './Constant';
 import { addToCart } from "../../redux/features/cartSlice";
+import { CartItem } from "../../redux/features/prop";
 
 const Hero = () => {
   const dispatch = useDispatch();
 
-  const handleCart = (item: any) => {
+  const handleCart = (item: CartItem) => {
     dispatch(addToCart(item));
     toast.success("Item added In Your Cart")
   }

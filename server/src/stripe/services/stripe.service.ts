@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Stripe from 'stripe';
+import { CartItem } from '../prop';
 
 @Injectable()
 export class StripeService {
   private stripe: Stripe;
 
-  constructor(private configService: ConfigService) {
+constructor(private configService: ConfigService) {
     this.stripe = new Stripe(
       this.configService.get<string>('STRIPE_SECRET_KEY'),
       {
@@ -16,7 +17,7 @@ export class StripeService {
   }
 
   async createCheckoutSession(products: any) {
-    const lineItems = products?.map((product: any) => ({
+    const lineItems = products?.map((product: CartItem) => ({
       price_data: {
         currency: 'usd',
         product_data: {

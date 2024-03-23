@@ -6,6 +6,7 @@ import { IconMinus, IconPlus, IconShoppingCartFilled, IconTrash } from '@tabler/
 import { loadStripe } from '@stripe/stripe-js';
 import { toast } from 'react-toastify';
 import { addToCart, decrementItem, removeItem } from '../../redux/features/cartSlice';
+import { CartItem } from '../../redux/features/prop';
 
 const CartTable = () => {
     const { cartItems } = useSelector((state: any) => state.carts);
@@ -21,18 +22,18 @@ const CartTable = () => {
     const handleDecrementItem = (id: number) => {
         dispatch(decrementItem(id));
     }
-    const handleIncrement = (item: any) => {
+    const handleIncrement = (item: CartItem) => {
         dispatch(addToCart(item));
     }
 
-    const handleDecrement = (item: any) => {
+    const handleDecrement = (item: CartItem) => {
         item?.quantity <= 1 ? handleItemRemoval(item?.id) : handleDecrementItem(item?.id);
     }
 
 
     const total = () => {
         let totalCost = 0
-        cartItems?.map((item: any) => {
+        cartItems?.map((item: CartItem) => {
             totalCost += item.price * item.quantity;
         });
         setTotalPrice(totalCost)
@@ -92,7 +93,7 @@ const CartTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {cartItems?.map((item: any) => (
+                        {cartItems?.map((item: CartItem) => (
                             <tr className='h-[5rem]'>
                                 <td className='w-[10%]'><Image src={item.image} h={50} className='object-contain' alt="products" /></td>
                                 <td className='w-[35%] text-center text-wrap'>{item.name}</td>
