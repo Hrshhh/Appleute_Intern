@@ -14,14 +14,18 @@ const CartTable = () => {
 
     const dispatch = useDispatch();
 
+    // Removing Item
     const handleItemRemoval = (id: number) => {
         dispatch(removeItem(id));
         toast.success("Item is removed from your cart")
     }
 
+    // Decrementing Item
     const handleDecrementItem = (id: number) => {
         dispatch(decrementItem(id));
     }
+
+    // Incrementing Item
     const handleIncrement = (item: CartItem) => {
         dispatch(addToCart(item));
     }
@@ -30,14 +34,18 @@ const CartTable = () => {
         item?.quantity <= 1 ? handleItemRemoval(item?.id) : handleDecrementItem(item?.id);
     }
 
-
-    const total = () => {
+    // Calculate Total Cost
+    const finalCost = () => {
         let totalCost = 0
         cartItems?.map((item: CartItem) => {
             totalCost += item.price * item.quantity;
         });
         setTotalPrice(totalCost)
     }
+    
+    useEffect(() => {
+        finalCost();
+    }, [finalCost])
 
     const proceedToPay = async () => {
         const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -62,10 +70,6 @@ const CartTable = () => {
             console.log(result?.error);
         }
     }
-
-    useEffect(() => {
-        total();
-    }, [total])
 
     return (
         <div >

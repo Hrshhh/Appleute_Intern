@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '@mantine/core';
 import { toast } from 'react-toastify';
 import CartTable from './CartTable';
-import { removeAllItems } from '../../redux/features/cartSlice';
 import Header from '../common/Header';
+import { removeAllItems } from '../../redux/features/cartSlice';
 
 const Cart = () => {
     const { cartItems } = useSelector((state: any) => state.carts);
