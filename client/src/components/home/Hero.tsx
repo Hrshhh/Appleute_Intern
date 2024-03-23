@@ -1,14 +1,11 @@
 import { Card, Image } from "@mantine/core";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { items } from './Constant';
 import { addToCart } from "../../redux/features/cartSlice";
 
 const Hero = () => {
-  const {cartItems} = useSelector((state: any) => state.carts);
   const dispatch = useDispatch();
-
-  console.log("sdf", cartItems);
 
   const handleCart = (item: any) => {
     dispatch(addToCart(item));
@@ -32,13 +29,15 @@ const Hero = () => {
 
               <div>
                 <div className="text-center">{item.name}</div>
-                <div className="my-2 flex justify-between items-center">
-                  <h4 className="text-red-800 font-bold">${item.price}</h4>
-                  <div className="bg-yellow-400 rounded-md px-2">{item.rating}&nbsp;★</div>
+                <div className="flex justify-center">
+                  <div className="my-2 flex justify-between items-center w-[80%]">
+                    <h4 className="text-violet-800 font-bold">${item.price}</h4>
+                    <div className="bg-yellow-400 rounded-md px-2">{item.rating}&nbsp;★</div>
+                  </div>
                 </div>
 
                 <div className="flex justify-center">
-                  <button className="text-white bg-red-500 px-4 py-1 rounded-md" onClick={() => handleCart(item)}>Add To Cart</button>
+                  <button className="text-white bg-violet-800 px-4 py-2 rounded-md w-full" onClick={() => handleCart(item)}>Add To Cart</button>
                 </div>
               </div>
             </Card>

@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.glamour_grip::before,
+.glamour_grip::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+}
+
+.glamour_grip::before {
+    border-radius: 45%;
+    background-color: rgb(123, 52, 229);
+    animation: animate 5s linear infinite;
+}
+.glamour_grip::after{
+    border-radius: 40%;
+    background-color: rgba(123, 52, 229, 0.5);
+    animation: animate 10s linear infinite;
+}
+
+.glamour_grip:active::before,
+.glamour_grip:active::after {
+    top: -60px !important;
+}
+
+@keyframes animate {
+    0% {
+      transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
