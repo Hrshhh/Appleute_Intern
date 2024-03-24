@@ -25,3 +25,16 @@ Visa Card No:- 4111 1111 1111 1111
 MM / YY:- 12/24
 
 CVC:- 123
+
+Note:- Please make .env file in client and server
+
+In Client:- 
+
+VITE_STRIPE_PUBLISHABLE_KEY={Enter_YOUR_KEY}
+
+VITE_LOCAL_URL=http://localhost:5000
+
+In Server:-
+
+STRIPE_SECRET_KEY={ENTER_YOUR_SECRET_KEY}
+
