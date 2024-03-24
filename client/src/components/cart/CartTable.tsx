@@ -129,7 +129,7 @@ const CartTable = () => {
                             <th colSpan={2}>&nbsp;</th>
                             <th>&nbsp;</th>
                             <th className='text-center'>
-                                Total Price<span className='ml-2 mr-2'>:</span><span className='text-violet-800'>₹ {totalPrice.toFixed(2)}</span>
+                                Total Price<span className='ml-2 mr-2'>:</span><span className='text-violet-800'>${totalPrice.toFixed(2)}</span>
                             </th>
                             <th className=''>
                                 <div className='flex justify-center items-center'>

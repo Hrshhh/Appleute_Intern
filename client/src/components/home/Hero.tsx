@@ -31,7 +31,7 @@ const Hero = () => {
               <div>
                 <div className="text-center">{item.name}</div>
                 <div className="flex justify-center">
-                  <div className="my-2 flex justify-between items-center w-[95%]">
+                  <div className="my-2 flex justify-between items-center w-full">
                     <h4 className="text-violet-800 font-bold">${item.price}</h4>
                     <div className="bg-yellow-400 rounded-md px-2">{item.rating}&nbsp;★</div>
                   </div>
